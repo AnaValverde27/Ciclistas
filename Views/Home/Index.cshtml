@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Ciclistas.Models.Ciclista>
+
+@{ ViewBag.Title = "Home"; }
+
+<h2>Cálculo de Velocidad</h2>
+
+<button class="btn btn-light" style="margin-bottom:20px; margin-left:90%;">
+    @Html.ActionLink("Agregar", "Create")
+</button>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tiempo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Metros)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @*<a href="@Url.Action("Edit", "Edit", new { idCorredor = item.Id })">@item.Id</a>*@
+        @Html.ActionLink(item.Id.ToString(), "Edit", new { id = item.Id })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tiempo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Metros)
+    </td>
+</tr>}
+
+</table>
